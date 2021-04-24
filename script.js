@@ -3,6 +3,7 @@ window.addEventListener("load", function(){
   fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response){
     response.json().then(function(json){
       let astronauts = json;
+      astronauts.sort((a, b) => a.hoursInSpace - b.hoursInSpace);
       const container = document.getElementById("container");
       for(let astronaut of astronauts){
         let skills = astronaut.skills;
