@@ -5,6 +5,7 @@ window.addEventListener("load", function(){
       let astronauts = json;
       astronauts.sort((a, b) => b.hoursInSpace - a.hoursInSpace);
       const container = document.getElementById("container");
+      container.innerHTML = `<p>Astronaut Count: ${astronauts.length}</p>`;
       for(let astronaut of astronauts){
         let skills = astronaut.skills;
         container.innerHTML += `
@@ -13,7 +14,7 @@ window.addEventListener("load", function(){
               <h3>${astronaut.firstName} ${astronaut.lastName}</h3>
               <ul>
                 <li>Hours in space: ${astronaut.hoursInSpace}</li>
-                <li>Active: ${astronaut.active}</li>
+                <li ${(astronaut.active ? `class="active"` : "")}>Active: ${astronaut.active}</li>
                 <li>Skills: ${skills.map(skill => `${skill}`).join(", ")}</li>
               </ul>
             </div>
